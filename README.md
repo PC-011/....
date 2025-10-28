@@ -82,7 +82,7 @@ El proyecto está dividido en tres módulos:
 classDiagram
     direction TB  %% de arriba hacia abajo
 
-    %% 1️⃣ Clase base primero (en la cabeza)
+    %% Nivel 1: clase abstracta
     class EstadisticaBase {
         <<abstract>>
         +datos
@@ -91,7 +91,7 @@ classDiagram
         +resumen()*
     }
 
-    %% 2️⃣ Subclases en el segundo nivel
+    %% Nivel 2: subclases
     class EstadisticaCuantitativa {
         +media()
         +mediana()
@@ -106,15 +106,15 @@ classDiagram
         +resumen()
     }
 
-    %% 3️⃣ Clase principal (Main) al final
+    %% Nivel 3: clase principal
     class Main {
         +main.py()
     }
 
-    %% Relaciones de herencia
+    %% Relaciones jerárquicas
     EstadisticaBase <|-- EstadisticaCuantitativa
     EstadisticaBase <|-- EstadisticaCualitativa
 
-    %% Relaciones de uso
+    %% Relaciones de uso (de abajo hacia arriba)
     Main ..> EstadisticaCuantitativa : utiliza
     Main ..> EstadisticaCualitativa : utiliza
