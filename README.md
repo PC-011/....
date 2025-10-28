@@ -80,8 +80,9 @@ El proyecto está dividido en tres módulos:
  
  ```mermaid
 classDiagram
-    direction TB  %% arriba → abajo
+    direction TB  %% de arriba hacia abajo
 
+    %% 1️⃣ Clase base primero (en la cabeza)
     class EstadisticaBase {
         <<abstract>>
         +datos
@@ -90,6 +91,7 @@ classDiagram
         +resumen()*
     }
 
+    %% 2️⃣ Subclases en el segundo nivel
     class EstadisticaCuantitativa {
         +media()
         +mediana()
@@ -104,12 +106,15 @@ classDiagram
         +resumen()
     }
 
+    %% 3️⃣ Clase principal (Main) al final
     class Main {
         +main.py()
     }
 
+    %% Relaciones de herencia
     EstadisticaBase <|-- EstadisticaCuantitativa
     EstadisticaBase <|-- EstadisticaCualitativa
 
+    %% Relaciones de uso
     Main ..> EstadisticaCuantitativa : utiliza
     Main ..> EstadisticaCualitativa : utiliza
